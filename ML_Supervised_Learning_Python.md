@@ -113,7 +113,58 @@ np.sqrt(mean_absolute_error(reg.predict(X_test), y_test))
 | The square of RMSE minimizes errors < 1 and maximizes errors > 1. Meaning that if I have a moderate MAE but a big RMSE, there are a few points differing much from the prediction.
 MAE and RMSE are different magnitudes and we MUST calculate both. |
 
-### 2.1.3. Correlation and Bias
+### 2.1.3. Correlation
+It measures whether or not there is a relationship between two variables. There should be a strong correlation between predictions and real values.
+
+**With numpy**
+```python
+import numpy as np
+
+# corrcoef() returns the correlation matrix.
+# when applied to two values, the element [0][1] will give us the correlation coefficient we are looking for
+# reg.predict(X_test) = predicted values
+
+np.corrcoef(reg.predict(X_test), y_test)[0][1]
+```
+
+**With sklearn**
+
+This function is not implemented in sklearn but we could create our own scorer and use it together with 'cross_val_score()'.
+```python
+import numpy as np
+from sklearn.metrics import make_scorer
+
+def mycorr(pred,y_test):
+  return np.corrcoef(pred,y_test)[0][1]
+
+cross_val_score(model,X,y,cv=5,scoring=make_scorer(mycorr)).mean()
+```
+### 2.1.4. Bias
+It is the average of errors (prediction values minus real values).<br />
+Negative errors will compensate positive ones.<br />
+Generall, high Bias means we are not capturing the complexity of the problem.
+
+**With numpy**
+```python
+import numpy as np
+
+# reg.predict(X_test) = predicted values
+
+np.mean(reg.predict(X_test) - y_test)
+```
+
+**With sklearn**
+
+This function is not implemented in sklearn but we could create our own scorer and use it together with 'cross_val_score()'.
+```python
+import numpy as np
+from sklearn.metrics import make_scorer
+
+def mybias(pred,y_test):
+  return np.mean(pred - y_test)
+
+cross_val_score(model,X,y,cv=5,scoring=make_scorer(mybias)).mean()
+```
 
 ## 2.2. Metrics: Classification
 ### 2.2.1. Accuracy
@@ -121,12 +172,13 @@ MAE and RMSE are different magnitudes and we MUST calculate both. |
 ### 2.2.3. AUC Curve
 
 # 3. Cross Validation Score
-Get more robust metrics using Cross Validation
+Get more robust metrics using Cross Validation.<br />
+It returns an array with all values. We can then calculate the mean of them.
 
 ```python
 from sklearn.model_selection import cross_val_score
 
-cross_val_score(model, X, y, cv=5, scoring="neg_mean_squared_error")
+cross_val_score(model, X, y, cv=5, scoring="neg_mean_squared_error").mean()
 # model = selected model
 # cv= number of training/test sets
 # X = inputs
