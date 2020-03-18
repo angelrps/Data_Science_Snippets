@@ -142,7 +142,6 @@ cross_val_score(model,X,y,cv=5,scoring=make_scorer(mycorr)).mean()
 ### 2.1.4. Bias
 It is the average of errors (prediction values minus real values).<br />
 Negative errors will compensate positive ones.<br />
-Generall, high Bias means we are not capturing the complexity of the problem.
 
 **With numpy**
 ```python
@@ -165,6 +164,20 @@ def mybias(pred,y_test):
 
 cross_val_score(model,X,y,cv=5,scoring=make_scorer(mybias)).mean()
 ```
+
+### 2.1.5. Variance
+Is the average of errors in predictions between two different data sets.
+
+```python
+import numpy as np
+
+np.mean(reg.predict(X_train) - reg.predict(X_test))
+```
+
+| Bias-Variance Tradeoff|
+| ------------------- |
+|- **High Bias** means that we are not capturing the complexity of the problem (**underfitting**).|
+|- **High Variance** meansthat we may be modelling the noise in the training set (**overfitting**). |
 
 ## 2.2. Metrics: Classification
 ### 2.2.1. Accuracy
