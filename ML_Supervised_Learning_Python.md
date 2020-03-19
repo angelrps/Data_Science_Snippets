@@ -281,6 +281,14 @@ print(classification_report(y_test,clf.predict(X_test)))
 
 ### 2.2.6. AUC Curve
 
+| Confusion Matrix |
+| ------------------- |
+|It is not a metric but it helps to see how distributed is your problem|
+```python
+from sklearn.metrics import confusion_matrix
+confusion_matrix(y_test, clf.predict(X_test)
+```
+
 # 3. Cross Validation Score
 Get more robust metrics using Cross Validation.<br />
 It returns an array with all values. We can then calculate the mean of them.
