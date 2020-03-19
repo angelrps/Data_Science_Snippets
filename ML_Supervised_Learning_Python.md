@@ -1,5 +1,3 @@
-## 1.2. Model: Classification
-
 # 0. Split Data
 Create Training Set and Test Set with sklearn
 ```python
@@ -27,13 +25,13 @@ reg.fit(X_train, y_train)
 reg.predict([[2540],[3500],[4000]])
 
 ```
-### 1.1.2. (KNN) K-Nearest Neighbor Regressor
+### 1.1.2. K-Nearest Neighbor Regressor (KNN)
 **Parameters:**<br />
 **k**: number of neighbors <br />
 **weight**: way to give more importance to points which are nearby and less weight to the points which are farther away. <br />
-- **Uniform**: all the same distance.<br />
-- **Distance**: weighted average per distance <br />
-- **Custom**: weighted average provided by user
+- `'unifor'`: all the same distance.<br />
+- `'distance'`: weighted average per distance <br />
+- `'Custom'`: weighted average provided by user
 
 ```python
 from sklearn.neighbors import KNeighborsRegressor
@@ -49,6 +47,7 @@ regk.fit(X_train, y_train)
 
 ### 1.1.3. Decision Tree Regressor
 Simple to understand, interpret and vizualise.
+
 **Parameters:**<br />
 **max_depth**: number of splits <br />
 **min_samples_leaf**: minimum number of samples for each split group
@@ -79,7 +78,8 @@ clr=LogisticRegression()
 # Train the data
 clr.fit(X_train,y_train)
 ```
-### 1.2.2. K-Nearest Neighbor Classifier
+### 1.2.2. K-Nearest Neighbor Classifier (KNN)
+
 **Parameters:**<br />
 Same as K-Nearest Neighbor Classifier
 ```python
@@ -93,7 +93,28 @@ regk = KNeighborsClassifier(n_neighbors=5)
 # Train the data 
 regk.fit(X_train, y_train)
 ```
-### 1.2.3. Support Vector Machine
+### 1.2.3. Support Vector Machine (SVM)
+Tries to separate the classes by a line. This line can be straight, circle, and more.<br />
+It is computationally expensive so we will use as a last option if the other models fail.
+
+**Parameters:**<br />
+**C**: error margins. Large values = smaller margins. Small values = larger margins.<br />
+**kernel**: function that transforms the dimensional space so we can separate de data when there is a non-linear separation problem.<br />
+- `'linear'`: line of separation
+- `'poly'`: curved line of separation
+- `'rbf'`: circle of separation <br />
+**degree**: degree of the polynomal kernel function (`'poly'`).
+
+```python
+from sklearn.svm import SVC
+
+# Create an instance of the classifier
+clf = SVC(kernel="linear",C=10)
+
+# Train the data
+clf.fit(X,y)
+```
+
 ### 1.2.4. Decision Tree Classifier
 
 
@@ -330,6 +351,7 @@ cross_val_score(model, X, y, cv=5, scoring="neg_mean_squared_error").mean()
 ## 4.1. GridSearchCV
 Search over a grid of parameters to find the best for your model. It returns an instance of the best model found. After this you need to train the model.
 
+**Example with KNeighborsRegressor()**
 ```python
 from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsRegressor
@@ -350,6 +372,19 @@ reg_test.fit(X,y)
 reg_test.best_score_
 reg_test.best_estimator_
 reg_test.best_params_
+```
+**Example with Support Vector Machines**
+```python
+from sklearn.model_selection import GridSearchCV
+from sklearn.svm import SVC
+
+clf = GridSearchCV(SVC(kernel="poly",),
+                  param_grid={"C":[1,10,100,1000,10000], "degree":[2,3,4,5]},
+                  cv=3,
+                  scoring="accuracy")
+
+# Train the model with the dataset
+clf.fit(X,y)
 ```
 ## 4.2. RandomizedSearchCV
 If you want to find parameters itereating through a big grid your computer may crash. RandomizedSearchCV picks up a limited number of parameters randomly from your grid.
