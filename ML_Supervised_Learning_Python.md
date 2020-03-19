@@ -1,3 +1,5 @@
+## 1.2. Model: Classification
+
 # 0. Split Data
 Create Training Set and Test Set with sklearn
 ```python
