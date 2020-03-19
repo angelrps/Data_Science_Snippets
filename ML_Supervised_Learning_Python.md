@@ -101,8 +101,7 @@ regk.fit(X_train, y_train)
 Measures average magnitud of the errors without considering their direction (all errors in absolute value).
 It is intuitive to calculate, but you lose information related to the magnitud of th error.<br />
 Units are the same as the target variable.<br />
-Value range from 0 to infinite.<br />
-Lower values are better.
+Value range from 0 to infinite. Lower values are better.
 
 **Calculated with sklearn**
 ```python
@@ -122,8 +121,7 @@ myMAE = np.mean(np.abs(reg.predict(X_test) - y_test))
 
 ### 2.1.2. MAPE (Mean Absolute Percentage Error)
 Similar to MAE but it measures the error in percentage.<br />
-Value range from 0 to 100.<br />
-Lower values are better.<br />
+Value range from 0 to 100. Lower values are better.<br />
 **MAPE is not in sklearn so we calculate it MANUALLY with pandas**
 ```python
 import numpy as np
@@ -225,11 +223,10 @@ from sklearn.metrics import accuracy_score
 
 accuracy_score(y_test, clr.predict(X_test))
 
-# Or get a better Accuracy with Croos Validation
+# Or get a better Accuracy with Cross Validation
 from sklearn.model_selection import cross_val_score
 
-cvs = cross_val_score(clr,X,y,scoring="accuracy", cv=5)
-cvs.mean()
+cross_val_score(clr,X,y,scoring="accuracy", cv=5).mean()
 ```
 ### 2.2.2. Precision
 It is like Accuracy but it only looks at data that you predicted positive.<br />
@@ -278,15 +275,38 @@ from sklearn.metrics import classification_report
 
 print(classification_report(y_test,clf.predict(X_test)))
 ```
+### 2.2.6. ROC Curve (Receiver Operating Characteristic Curve)
+It show how confident is your classifier with the area under the curve.
 
-### 2.2.6. AUC Curve
+```python
+from sklearn.metrics import roc_curve
 
-| Confusion Matrix |
-| ------------------- |
-|It is not a metric but it helps to see how distributed is your problem|
+# Get predictions in form of probabilities
+pred = clf.best_estimator_.predict_proba(X_test)
+
+# We chose the target
+target_pos = 1 # Or 0 for the other class
+fp,tp,_ = roc_curve(y_test,pred[:,target_pos])
+plt.plot(fp,tp)
+```
+### 2.2.7. AUC (Area Under the Curve)
+Value range from 0 to 1. Higher values are better. However if your AUC is below 0.5, you could invert all the outputs of your classifier and get a better score, so you did something wrong.<br />
+Once you have calculated the `roc_curve` from the point above:
+```python
+from sklearn.metrics import auc
+
+auc(fp,tp)
+
+# Or using Cross Validation
+cross_val_score(clr,X,y,scoring="roc_auc", cv=5).mean()
+```
+
+### * Confusion Matrix
+It is not a metric but it helps to see how distributed your predictions are.
 ```python
 from sklearn.metrics import confusion_matrix
-confusion_matrix(y_test, clf.predict(X_test)
+
+confusion_matrix(y_test, clf.predict(X_test))
 ```
 
 # 3. Cross Validation Score
