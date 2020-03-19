@@ -149,7 +149,7 @@ np.sqrt(mean_absolute_error(reg.predict(X_test), y_test))
 | The square of RMSE minimizes errors < 1 and maximizes errors > 1. Meaning that if I have a moderate MAE but a big RMSE, there are a few points differing much from the prediction.
 MAE and RMSE are different magnitudes and we MUST calculate both. |
 
-### 2.1.3. Correlation
+### 2.1.4. Correlation
 It measures whether or not there is a relationship between two variables. There should be a strong correlation between predictions and real values.
 
 **With numpy**
@@ -175,7 +175,7 @@ def mycorr(pred,y_test):
 
 cross_val_score(model,X,y,cv=5,scoring=make_scorer(mycorr)).mean()
 ```
-### 2.1.4. Bias
+### 2.1.5. Bias
 It is the average of errors (prediction values minus real values).<br />
 Negative errors will compensate positive ones.<br />
 
@@ -201,7 +201,7 @@ def mybias(pred,y_test):
 cross_val_score(model,X,y,cv=5,scoring=make_scorer(mybias)).mean()
 ```
 
-### 2.1.5. Variance
+### 2.1.6. Variance
 Is the average of errors in predictions between two different data sets.
 
 ```python
@@ -217,7 +217,7 @@ np.mean(reg.predict(X_train) - reg.predict(X_test))
 
 ## 2.2. Metrics: Classification
 ### 2.2.1. Accuracy
-It mesasures the overall predicted accuracy of the model in percentage.
+It mesasures the overall predicted accuracy of the model in percentage.<br />
 It is calculated as `(True Positives + True Negatives)/(True Positives + True Negatives + False Positives + False Negatives)`
 
 ```python
@@ -232,7 +232,7 @@ cvs = cross_val_score(clr,X,y,scoring="accuracy", cv=5)
 cvs.mean()
 ```
 ### 2.2.2. Precision
-It is like Accuracy but it only looks at data that you predicted positive.
+It is like Accuracy but it only looks at data that you predicted positive.<br />
 It is calculated as `(True Positives)/(True Positives + False Positives)`
 
 ```python
@@ -246,7 +246,7 @@ from sklearn.model_selection import cross_val_score
 cross_val_score(clf,X,y,scoring="precision").mean()
 ```
 ### 2.2.3. Recall (Sensitivity)
-Ability of a model to find all the relevant cases within a dataset.
+Ability of a model to find all the relevant cases within a dataset.<br />
 It is calculated as `(True Positives)/(True Positives + False Negatives)`
 
 ```python
@@ -260,8 +260,26 @@ from sklearn.model_selection import cross_val_score
 cross_val_score(clf,X,y,scoring="recall").mean()
 ```
 ### 2.2.4. F1 score
+Harmonic mean of Precision and Recall.<br />
+Value range from 0 (worst) to 1 (best).<br />
+It is calculated as `2*(Recall * Precision) / (Recall + Precision)`
+
+```python
+from sklearn.metrics import f1_score
+
+f1_score(y_test, clf.predict(X_test))
+```
+
 ### 2.2.5. Classification Report
-### 2.2.4. AUC Curve
+Builds a report showing Precision, Recall and F1-score of our model.
+
+```python
+from sklearn.metrics import classification_report
+
+print(classification_report(y_test,clf.predict(X_test)))
+```
+
+### 2.2.6. AUC Curve
 
 # 3. Cross Validation Score
 Get more robust metrics using Cross Validation.<br />
