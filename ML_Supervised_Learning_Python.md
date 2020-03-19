@@ -25,7 +25,7 @@ reg.fit(X_train, y_train)
 reg.predict([[2540],[3500],[4000]])
 
 ```
-### 1.1.2. (KNN) K Nearest Neighbor Regressor
+### 1.1.2. (KNN) K-Nearest Neighbor Regressor
 **Parameters:**<br />
 **k**: number of neighbors <br />
 **weight**: way to give more importance to points which are nearby and less weight to the points which are farther away. <br />
@@ -46,15 +46,51 @@ regk.fit(X_train, y_train)
 ```
 
 ### 1.1.3. Decision Tree Regressor
+Simple to understand, interpret and vizualise.
+**Parameters:**<br />
+**max_depth**: number of splits <br />
+**min_samples_leaf**: minimum number of samples for each split group
 
 ```python
 from sklearn.tree import DecisionTreeRegressor
+
+# Create an instance.
+regd = DecisionTreeRegressor (max_depth = 3,
+                              min_samples_leaf=20)
+
+# Train the data
+regd.fit(X_train, y_train)
 ```
+
 ## 1.2. Model: Classification
 Output is a Class
 
 ### 1.2.1. Logistic Regression
-### 1.2.2. K Neighbor Classifier
+
+```python
+# Load the library
+from sklearn.linear_model import LogisticRegression
+
+# Create an instance of the classifier
+clr=LogisticRegression()
+
+# Train the data
+clr.fit(X_train,y_train)
+```
+### 1.2.2. K-Nearest Neighbor Classifier
+**Parameters:**<br />
+Same as K-Nearest Neighbor Classifier
+```python
+# Load the library
+from sklearn.neighbors import KNeighborsClassifier
+
+# Create an instance of the classifier
+# parameter weights = 'uniform' as default
+regk = KNeighborsClassifier(n_neighbors=5)
+
+# Train the data 
+regk.fit(X_train, y_train)
+```
 ### 1.2.3. Support Vector Machine
 ### 1.2.4. Decision Tree Classifier
 
@@ -181,8 +217,51 @@ np.mean(reg.predict(X_train) - reg.predict(X_test))
 
 ## 2.2. Metrics: Classification
 ### 2.2.1. Accuracy
-### 2.2.2. Precision and Recall
-### 2.2.3. AUC Curve
+It mesasures the overall predicted accuracy of the model in percentage.
+It is calculated as `(True Positives + True Negatives)/(True Positives + True Negatives + False Positives + False Negatives)`
+
+```python
+from sklearn.metrics import accuracy_score
+
+accuracy_score(y_test, clr.predict(X_test))
+
+# Or get a better Accuracy with Croos Validation
+from sklearn.model_selection import cross_val_score
+
+cvs = cross_val_score(clr,X,y,scoring="accuracy", cv=5)
+cvs.mean()
+```
+### 2.2.2. Precision
+It is like Accuracy but it only looks at data that you predicted positive.
+It is calculated as `(True Positives)/(True Positives + False Positives)`
+
+```python
+from sklearn.metrics import precision_score
+
+precision_score(y_test,clf.predict(X_test))
+
+# With Croos Validation
+from sklearn.model_selection import cross_val_score
+
+cross_val_score(clf,X,y,scoring="precision").mean()
+```
+### 2.2.3. Recall (Sensitivity)
+Ability of a model to find all the relevant cases within a dataset.
+It is calculated as `(True Positives)/(True Positives + False Negatives)`
+
+```python
+from sklearn.metrics import recall_score
+
+recall_score(y_test, clf.predict(X_test))
+
+# With Croos Validation
+from sklearn.model_selection import cross_val_score
+
+cross_val_score(clf,X,y,scoring="recall").mean()
+```
+### 2.2.4. F1 score
+### 2.2.5. Classification Report
+### 2.2.4. AUC Curve
 
 # 3. Cross Validation Score
 Get more robust metrics using Cross Validation.<br />
