@@ -112,11 +112,33 @@ from sklearn.svm import SVC
 clf = SVC(kernel="linear",C=10)
 
 # Train the data
-clf.fit(X,y)
+clf.fit(X_train,y_train)
 ```
 
 ### 1.2.4. Decision Tree Classifier
+Same Parameters as Decision Tree Regressor
+```python
+from sklearn.tree import DecisionTreeClassifier
+clft = DecisionTreeClassifier(min_samples_leaf=20, max_depth=10)
 
+# Train the data
+clft.fit(X_train,y_train)
+```
+**Using GridSearchCV**
+```python
+from sklearn.tree import DecisionTreeClassifier
+
+clft = GridSearchCV(DecisionTreeClassifier(),
+                  param_grid={"max_depth":np.arange(2,20), 
+                              "min_samples_leaf":np.arange(20,100,20)},
+                  cv=3,
+                  scoring="accuracy")
+# Train the data                
+clft.fit(X,y)
+
+clft.best_score_
+clft.best_params_
+```
 
 # 2. Metrics
 ## 2.1. Metrics: Regression
@@ -404,3 +426,7 @@ reg_dt_test = RandomizedSearchCV(DecisionTreeRegressor(),
 # Train the model with the dataset
 reg_dt_test.fit(X,y)
 ```
+# 5. Ensemble Learning
+Combination of simple models in order to improve final results.<br />
+It can be used in both Regression and Classification.<br />
+Random Forest and Gradient Boosting Tree are ensemble methods.
