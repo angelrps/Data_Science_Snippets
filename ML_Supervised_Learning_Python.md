@@ -427,6 +427,65 @@ reg_dt_test = RandomizedSearchCV(DecisionTreeRegressor(),
 reg_dt_test.fit(X,y)
 ```
 # 5. Ensemble Learning
-Combination of simple models in order to improve final results.<br />
+Combination of multiple models in order to improve predictive accuracy.<br />
+Prevents overfitting.<br />
 It can be used in both Regression and Classification.<br />
 Random Forest and Gradient Boosting Tree are ensemble methods.
+## 5.1. VotingClassifier
+Combines multiple different models into a single model, which is (ideally) stronger than any of the individual models alone.
+Example below of VotingClassifier created out of a DecisionTreeClassifier and LogisticRegression
+```python
+from sklearn.ensemble import VotingClassifier
+
+# Specify voting classifiers as a list of (name, sub-estimator) 
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LogisticRegression
+
+classifiers = [('dectree', DecisionTreeClassifier(min_samples_leaf=16, max_depth=4)),
+                ('log', LogisticRegression())]
+
+# Create VotingClassifier
+clf = VotingClassifier(estimators = classifiers)
+```
+## 5.2. Bagging (Bootstrap Aggregation)
+It divides the dataset into subsets, sampling with replacement, fits a base estimator on each subset, and then aggregate their individual predictions.<br />
+
+```python
+from sklearn.ensemble import BaggingClassifier
+
+# base_estimator = KNeighborsClassifier in this example
+# n_estimators: number of subsets. We can start with 100, and if it improves the single model, increase to 500, 1000, ...
+# oob_score (Out Of Bag): set to True for small data sets. (default value = False)
+clf=BaggingClassifier(base_estimator=KNeighborsClassifier(n_neighbors=4),n_estimators=100,oob_score=True)
+
+# Train the model
+clf.fit(X,y)
+```
+
+## 5.3. Random Forest
+Enhanced version of Bagging, using Decision Trees.
+Sklearn has its own algorithm for Random Forest.
+**Parameters:**<br />
+**N_estimators**: number of trees in the forest
+**max_depth**: number of splits <br />
+**min_samples_leaf**: minimum number of samples for each split group
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+# n_jobs: to specify how many concurrent processes/threads should be used. For -1, all CPUs are used.
+clf = RandomForestClassifier(max_depth=3,
+                             min_samples_leaf=20,
+                             n_estimators=100,
+                            n_jobs=-1)
+                            
+# Train the mdoel
+clf.fit(X,y)
+```
+
+
+# References
+https://examples.dask.org/ <br />
+https://scikit-learn.org
+
+
