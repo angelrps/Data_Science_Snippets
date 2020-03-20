@@ -483,9 +483,35 @@ clf = RandomForestClassifier(max_depth=3,
 clf.fit(X,y)
 ```
 
+## 5.4. Gradient Boosting Tree
+**Parameters:**<br />
+**N_estimators**: number of trees in the forest <br />
+**learning_rate**: how much correction do I keep from the precious model. Small values (<= 0.1) lead to much better generalization error. <br />
+**max_depth**: number of splits <br />
+**min_samples_leaf**: minimum number of samples for each split group
+```python
+from sklearn.ensemble import GradientBoostingRegressor
+
+regGBT = GradientBoostingRegressor(max_depth=4,
+                                min_samples_leaf=20,
+                                n_estimators=100,
+                                learning_rate=0.1)
+```
+Example using GridSearchCV
+```python
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.model_selection import GridSearchCV
+
+reg = GridSearchCV(GradientBoostingRegressor(n_estimators=50),
+                  param_grid={"max_depth":np.arange(2,10),
+                             "learning_rate":np.arange(1,10)/10},
+                  scoring="neg_mean_absolute_error",
+                  cv=5)
+```
 
 # References
 https://examples.dask.org/ <br />
-https://scikit-learn.org
+https://scikit-learn.org <br />
+https://machinelearningmastery.com/configure-gradient-boosting-algorithm/
 
 
