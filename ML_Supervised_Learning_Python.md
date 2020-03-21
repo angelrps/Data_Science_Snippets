@@ -1,5 +1,21 @@
-# 0. Split Data
-Create Training Set and Test Set with sklearn
+### Summary
+**0. Split Data**<br />
+**1. Models**<br />
+**1.1. Model: Regression**<br />
+**1.1.1. Linear Regression**<br />
+**1.1.2. K-Nearest Neighbor (KNN)**<br />
+**1.1.4**<br />
+**1.1.2**<br />
+**1.1.2**<br />
+**1.1.2**<br />
+**2. Metrics**<br />
+**3. Cross Validation Score**<br />
+**4. Testing Parameters**<br />
+**5. Ensemble Learning**<br />
+**6. Referencies**<br />
+
+# 0. Train-Test Data Split
+Create Training Set and Test Set with sklearn.
 ```python
 from sklearn.model_selection import train_test_split
 
@@ -27,11 +43,11 @@ reg.predict([[2540],[3500],[4000]])
 ```
 ### 1.1.2. K-Nearest Neighbor Regressor (KNN)
 **Parameters:**<br />
-**k**: number of neighbors <br />
-**weight**: way to give more importance to points which are nearby and less weight to the points which are farther away. <br />
-- `'unifor'`: all the same distance.<br />
-- `'distance'`: weighted average per distance <br />
-- `'Custom'`: weighted average provided by user
+- **k**: number of neighbors <br />
+- **weight**: way to give more weight to points which are nearby and less weight to the points which are farther away. <br />
+* `'uniform'`: all the same weight.<br />
+* `'distance'`: weighted average per distance. <br />
+* `'Custom'`: weighted average provided by user
 
 ```python
 from sklearn.neighbors import KNeighborsRegressor
