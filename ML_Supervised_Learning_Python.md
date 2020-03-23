@@ -1,14 +1,53 @@
-### Summary
+<!--ts-->
+   * [gh-md-toc](#gh-md-toc)
+   * [Table of contents](#table-of-contents)
+   * [Installation](#installation)
+   * [Usage](#usage)
+      * [STDIN](#stdin)
+      * [Local files](#local-files)
+      * [Remote files](#remote-files)
+      * [Multiple files](#multiple-files)
+      * [Combo](#combo)
+      * [Auto insert and update TOC](#auto-insert-and-update-toc)
+      * [GitHub token](#github-token)
+   * [Tests](#tests)
+   * [Dependency](#dependency)
+<!--te-->
+
+Installation
+============
+
+#### Summary
+### Summmmary
 **0. Split Data**<br />
 **1. Models**<br />
-**1.1. Model: Regression**<br />
+**1.1. Models: Regression**<br />
 **1.1.1. Linear Regression**<br />
 **1.1.2. K-Nearest Neighbor (KNN)**<br />
-**1.1.4**<br />
-**1.1.2**<br />
-**1.1.2**<br />
-**1.1.2**<br />
+**1.1.3. Decision Tree Regressor**<br />
+**1.2. Models: Classification**<br />
+**1.2.1. Logistic Regression**<br />
+**1.2.2. K-Nearest Neighbor Classifier (KNN)**<br />
+**1.2.3. Support Vector Machine (SVM)**<br />
+**1.2.4. Decision Tree Classifier**<br />
 **2. Metrics**<br />
+**2.1. Metrics: Regression**<br />
+**2.1.1. MAE (Mean Absolute Error)**<br />
+**2.1.2. MAPE (Mean Absolute Percentage Error)**<br />
+**2.1.3. RMSE (Root Mean Squared Error)**<br />
+**2.1.4. Correlation**<br />
+**2.1.5. Bias<br />
+**2.1.6. Variance**<br />
+**2.2. Metrics: Classification**<br />
+**2.2.1. Accuracy**<br />
+**2.2.2. Precision**<br />
+**2.2.3. Recall (Sensitivity)**<br />
+**2.2.4. F1 score**<br />
+**2.2.5. Classfication Report**<br />
+**2.2.6. ROC Curve (Receiver Operating Characteristic Curve**<br />
+**2.2.7. AUC (Area Under the Curve)**<br />
+**2.2.8. Confusion Matrix**<br />
+
 **3. Cross Validation Score**<br />
 **4. Testing Parameters**<br />
 **5. Ensemble Learning**<br />
@@ -362,7 +401,7 @@ auc(fp,tp)
 cross_val_score(clr,X,y,scoring="roc_auc", cv=5).mean()
 ```
 
-### * Confusion Matrix
+### 2.2.8. Confusion Matrix
 It is not a metric but it helps to see how distributed your predictions are.
 ```python
 from sklearn.metrics import confusion_matrix
