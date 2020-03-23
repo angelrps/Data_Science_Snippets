@@ -34,8 +34,10 @@
 * [5_Ensemble Learning](#5_Ensemble-Learning)
   * [5_1_VotingClassifier](#5_1_VotingClassifier)
   * [5_2_Bagging or Bootstrap Aggregation](#5_2_Bagging-or-Bootstrap-Aggregation)
-  * [5_3_Random Forest](#5_3_Random-Forest)  
-  * [5_4_Gradient Boosting Tree](#5_4_Gradient-Boosting-Tree)
+  * [5_3_Random Forest Regressor](#5_3_Random-Forest-Regressor)
+  * [5_4_Random Forest Classifier](#5_4_Random-Forest-Classifier)  
+  * [5_5_Gradient Boosting Regressor](#5_5_Gradient-Boosting-Regressor)
+  * [5_6_Gradient Boosting Classifier](#5_6_Gradient-Boosting-Classifier)
 * [6_References](#6_References)
   
 # 0_Train Test Data Split
