@@ -13,7 +13,7 @@
    * [Dependency](#dependency)
 <!--te-->
 
-[testing: summary](#testing-summary)
+[1.1. testing: summary](#testing-summary)
 
 Installation
 ============
