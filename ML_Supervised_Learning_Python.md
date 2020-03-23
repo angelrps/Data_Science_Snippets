@@ -2,7 +2,6 @@
    * [gh-md-toc](#gh-md-toc)
    * [Table of contents](#table-of-contents)
    * [Installation](#installation)
-   * [1.1.testing: summary](#testing-summary)
       * [STDIN](#stdin)
       * [Local files](#local-files)
       * [Remote files](#remote-files)
@@ -13,6 +12,8 @@
    * [Tests](#tests)
    * [Dependency](#dependency)
 <!--te-->
+
+[testing: summary](#testing-summary)
 
 Installation
 ============
@@ -65,7 +66,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.10)
 # 1. Models
 ## 1.1. Model: Regression
 
-## 1.1.testing: summary
+## testing: summary
 
 Input variables (**X**) must be pandas **Data Frame** <br />
 Output variable: (**y**) must be pandas **Series**
