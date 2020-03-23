@@ -24,7 +24,7 @@
     * [2_2_3_Recall or Sensitivity](#2_2_3_Recall-or-Sensitivity)
     * [2_2_4_F1 score](#2_2_4_F1-score)
     * [2_2_5_Classification Report](#2_2_5_Classification-Report)
-    * [2_2_6_ROC Curve_Receiver Operating Characteristic Curve)](#2_2_6_ROC-Curve_(Receiver-Operating-Characteristic-Curve))
+    * [2_2_6_ROC Curve_Receiver Operating Characteristic Curve](#2_2_6_ROC-Curve_Receiver-Operating-Characteristic-Curve)
     * [2_2_7_AUC_Area Under the Curve](#2_2_7_AUC_Area-Under-the-Curve)
     * [2_2_8_Confusion Matrix](#2_2_8_Confusion-Matrix)
 * [3_Cross Validation Score](#3_Cross-Validation-Score)
@@ -359,7 +359,7 @@ from sklearn.metrics import classification_report
 
 print(classification_report(y_test,clf.predict(X_test)))
 ```
-### 2_2_6_ROC Curve_(Receiver Operating Characteristic Curve)
+### 2_2_6_ROC Curve_Receiver Operating Characteristic Curve
 It show how confident is your classifier with the area under the curve.
 
 ```python
