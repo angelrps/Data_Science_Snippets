@@ -18,7 +18,7 @@
 * [1_Models](#1_models)<br />
   * [1_1_Regression](#1_1_Regression)
   * [1_1_1_Linear Regression](#1_1_1_Linear-Regression)
-  * [1_1_2_K-Nearest Neighbor Regressor (KNN)](#1_1_2_K-Nearest-Neighbor-Regressor:-KNN)
+  * [1_1_2_K-Nearest Neighbor Regressor_KNN)](#1_1_2_K-Nearest-Neighbor-Regressor_KNN)
   * [](#)
   * [](#)
   * [](#)
@@ -54,7 +54,7 @@ reg.fit(X_train, y_train)
 reg.predict([[2540],[3500],[4000]])
 
 ```
-### 1_1_2_K Nearest Neighbor Regressor: KNN
+### 1_1_2_K Nearest Neighbor Regressor_KNN
 **Parameters:**<br />
 - **k**: number of neighbors <br />
 - **weight**: way to give more weight to points which are nearby and less weight to the points which are farther away. <br />
