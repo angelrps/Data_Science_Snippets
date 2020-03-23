@@ -13,14 +13,14 @@
    * [Dependency](#dependency)
 <!--te-->
 
-[0_Split Data](#0_split-data)
+[0_Split Data whatever](#0_train-test-data-split)
 
 Installation
 ============
 
 #### Summary
 ### Summmmary
-#### 0_Split Data<br />
+
 **1. Models**<br />
 **1.1. Models: Regression**<br />
 **1.1.1. Linear Regression**<br />
@@ -54,7 +54,7 @@ Installation
 **5. Ensemble Learning**<br />
 **6. Referencies**<br />
 
-# 0. Train-Test Data Split
+# 0_Train Test Data Split
 Create Training Set and Test Set with sklearn.
 ```python
 from sklearn.model_selection import train_test_split
