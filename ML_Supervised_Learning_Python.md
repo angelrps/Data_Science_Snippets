@@ -18,42 +18,15 @@
 * [1_Models](#1_models)<br />
   * [1_1_Regression](#1_1_Regression)
   * [1_1_1_Linear Regression](#1_1_1_Linear-Regression)
+  * [1_1_2_K-Nearest Neighbor Regressor (KNN)](#1_1_2_K-Nearest-Neighbor-Regressor-(KNN))
+  * [](#)
+  * [](#)
+  * [](#)
+  * [](#)
   * [](#)
   
-  1_1_1_Linear Regression
-
-
-**1.1.1. Linear Regression**<br />
-**1.1.2. K-Nearest Neighbor (KNN)**<br />
-**1.1.3. Decision Tree Regressor**<br />
-**1.2. Models: Classification**<br />
-**1.2.1. Logistic Regression**<br />
-**1.2.2. K-Nearest Neighbor Classifier (KNN)**<br />
-**1.2.3. Support Vector Machine (SVM)**<br />
-**1.2.4. Decision Tree Classifier**<br />
-**2. Metrics**<br />
-**2.1. Metrics: Regression**<br />
-**2.1.1. MAE (Mean Absolute Error)**<br />
-**2.1.2. MAPE (Mean Absolute Percentage Error)**<br />
-**2.1.3. RMSE (Root Mean Squared Error)**<br />
-**2.1.4. Correlation**<br />
-**2.1.5. Bias<br />
-**2.1.6. Variance**<br />
-**2.2. Metrics: Classification**<br />
-**2.2.1. Accuracy**<br />
-**2.2.2. Precision**<br />
-**2.2.3. Recall (Sensitivity)**<br />
-**2.2.4. F1 score**<br />
-**2.2.5. Classfication Report**<br />
-**2.2.6. ROC Curve (Receiver Operating Characteristic Curve**<br />
-**2.2.7. AUC (Area Under the Curve)**<br />
-**2.2.8. Confusion Matrix**<br />
-
-**3. Cross Validation Score**<br />
-**4. Testing Parameters**<br />
-**5. Ensemble Learning**<br />
-**6. Referencies**<br />
-
+  
+  
 # 0_Train Test Data Split
 Create Training Set and Test Set with sklearn.
 ```python
@@ -81,7 +54,7 @@ reg.fit(X_train, y_train)
 reg.predict([[2540],[3500],[4000]])
 
 ```
-### 1.1.2. K-Nearest Neighbor Regressor (KNN)
+### 1_1_2_K-Nearest Neighbor Regressor (KNN)
 **Parameters:**<br />
 - **k**: number of neighbors <br />
 - **weight**: way to give more weight to points which are nearby and less weight to the points which are farther away. <br />
