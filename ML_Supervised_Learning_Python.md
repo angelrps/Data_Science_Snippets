@@ -16,7 +16,7 @@
 ### Summmmary
 [0_Train-Test Data Split](#0_train-test-data-split) <br />
 [1_Models](#1_models)<br />
-[1_1_Models_Regression](#1_1_Models:-Regression)
+[1_1_Regression](#1_1_Regression)
 
 
 **1.1.1. Linear Regression**<br />
@@ -60,7 +60,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.10)
 ```
 
 # 1_Models
-## 1_1_Models: Regression
+## 1_1_Regression
 
 #### 1_1_testing: summary
 
