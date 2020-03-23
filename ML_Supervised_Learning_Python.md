@@ -1,25 +1,10 @@
-<!--ts-->
-   * [gh-md-toc](#gh-md-toc)
-   * [Table of contents](#table-of-contents)
-   * [Installation](#installation)
-      * [STDIN](#stdin)
-      * [Local files](#local-files)
-      * [Remote files](#remote-files)
-      * [Multiple files](#multiple-files)
-      * [Combo](#combo)
-      * [Auto insert and update TOC](#auto-insert-and-update-toc)
-      * [GitHub token](#github-token)
-   * [Tests](#tests)
-   * [Dependency](#dependency)
-<!--te-->
-
-### Summmmary
+### Summary
 * [0_Train-Test Data Split](#0_train-test-data-split) <br />
 * [1_Models](#1_models)<br />
   * [1_1_Regression](#1_1_Regression)
   * [1_1_1_Linear Regression](#1_1_1_Linear-Regression)
   * [1_1_2_K-Nearest Neighbor Regressor_KNN)](#1_1_2_K-Nearest-Neighbor-Regressor_KNN)
-  * [](#)
+  * [1_1_3_Decision Tree Regressor](#1_1_3_Decision-Tree-Regressor)
   * [](#)
   * [](#)
   * [](#)
@@ -74,7 +59,7 @@ regk = KNeighborsRegressor(n_neighbors=2, weights = 'uniform')
 regk.fit(X_train, y_train)
 ```
 
-### 1.1.3. Decision Tree Regressor
+### 1_1_3_Decision Tree Regressor
 Simple to understand, interpret and vizualise.
 
 **Parameters:**<br />
