@@ -14,9 +14,13 @@
 <!--te-->
 
 ### Summmmary
-[0_Train-Test Data Split](#0_train-test-data-split) <br />
-[1_Models](#1_models)<br />
-[1_1_Regression](#1_1_Regression)
+* [0_Train-Test Data Split](#0_train-test-data-split) <br />
+* [1_Models](#1_models)<br />
+  * [1_1_Regression](#1_1_Regression)
+  * [1_1_1_Linear Regression](#1_1_1_Linear-Regression)
+  * [](#)
+  
+  1_1_1_Linear Regression
 
 
 **1.1.1. Linear Regression**<br />
@@ -61,12 +65,9 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.10)
 
 # 1_Models
 ## 1_1_Regression
-
-#### 1_1_testing: summary
-
 Input variables (**X**) must be pandas **Data Frame** <br />
 Output variable: (**y**) must be pandas **Series**
-### 1.1.1. Linear Regression
+### 1_1_1_Linear Regression
 ```python
 from sklearn.linear_model import LinearRegression
 
