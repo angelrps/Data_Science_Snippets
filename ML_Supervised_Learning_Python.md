@@ -2,11 +2,11 @@
 * [0_Train-Test Data Split](#0_train-test-data-split) <br />
 * [1_Models](#1_models)<br />
   * [1_1_Regression](#1_1_Regression)
-  * [1_1_1_Linear Regression](#1_1_1_Linear-Regression)
-  * [1_1_2_K-Nearest Neighbor Regressor_KNN)](#1_1_2_K-Nearest-Neighbor-Regressor_KNN)
-  * [1_1_3_Decision Tree Regressor](#1_1_3_Decision-Tree-Regressor)
-  * [](#)
-  * [](#)
+    * [1_1_1_Linear Regression](#1_1_1_Linear-Regression)
+    * [1_1_2_K-Nearest Neighbor Regressor_KNN)](#1_1_2_K-Nearest-Neighbor-Regressor_KNN)
+    * [1_1_3_Decision Tree Regressor](#1_1_3_Decision-Tree-Regressor)
+  * [1_2_Classification](#1_2_Classification)
+    * [1_2_1_Logistic Regression](#1_2_1_Logistic-Regression)
   * [](#)
   * [](#)
   
@@ -77,10 +77,10 @@ regd = DecisionTreeRegressor (max_depth = 3,
 regd.fit(X_train, y_train)
 ```
 
-## 1.2. Model: Classification
+## 1_2_Classification
 Output is a Class
 
-### 1.2.1. Logistic Regression
+### 1_2_1_Logistic Regression
 
 ```python
 # Load the library
