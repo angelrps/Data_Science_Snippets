@@ -54,7 +54,7 @@ reg.fit(X_train, y_train)
 reg.predict([[2540],[3500],[4000]])
 
 ```
-### 1_1_2_K-Nearest Neighbor Regressor (KNN)
+### 1_1_2_K Nearest Neighbor Regressor (KNN)
 **Parameters:**<br />
 - **k**: number of neighbors <br />
 - **weight**: way to give more weight to points which are nearby and less weight to the points which are farther away. <br />
