@@ -500,15 +500,30 @@ clf=BaggingClassifier(base_estimator=KNeighborsClassifier(n_neighbors=4),n_estim
 # Train the model
 clf.fit(X,y)
 ```
-
-## 5_3_Random Forest
+## 5_3_Random Forest Regressor
 Enhanced version of Bagging, using Decision Trees.
 Sklearn has its own algorithm for Random Forest.
 
 **Parameters:**<br />
-- **N_estimators**: number of trees in the forest
+- **n_estimators**: number of trees in the forest
 - **max_depth**: number of splits <br />
 - **min_samples_leaf**: minimum number of samples for each split group
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+
+# n_jobs: to specify how many concurrent processes/threads should be used. For -1, all CPUs are used.
+reg = RandomForestClassifier(max_depth=3,
+                             min_samples_leaf=20,
+                             n_estimators=100,
+                             n_jobs=-1)
+                            
+# Train the mdoel
+reg.fit(X,y)
+```
+
+## 5_4_Random Forest Classifier
+Same parameters as Random Forest Regressor.
 
 ```python
 from sklearn.ensemble import RandomForestClassifier
@@ -517,15 +532,15 @@ from sklearn.ensemble import RandomForestClassifier
 clf = RandomForestClassifier(max_depth=3,
                              min_samples_leaf=20,
                              n_estimators=100,
-                            n_jobs=-1)
+                             n_jobs=-1)
                             
 # Train the mdoel
 clf.fit(X,y)
 ```
 
-## 5_4_Gradient Boosting Tree
+## 5_5_Gradient Boosting Regressor
 **Parameters:**<br />
-- **N_estimators**: number of trees in the forest.
+- **n_estimators**: number of trees in the forest.
 - **learning_rate**: how much correction do I keep from the precious model. Small values (<= 0.1) lead to much better generalization error.
 - **max_depth**: number of splits.
 - **min_samples_leaf**: minimum number of samples for each split group.
@@ -548,6 +563,18 @@ reg = GridSearchCV(GradientBoostingRegressor(n_estimators=50),
                   scoring="neg_mean_absolute_error",
                   cv=5)
 ```
+
+## 5_6_Gradient Boosting Classifier
+Same parameters as Gradient Boosting Regressor.
+
+```python
+from sklearn.ensemble import GradientBoostingClassifier
+
+clfGBT = GradientBoostingClassifier(max_depth=4,
+                                   min_samples_leaf=20,
+                                   n_estimators=100,
+                                   learning_rate=0.1)
+```   
 
 # 6_References
 https://github.com/Beovulfo/snippets3/blob/master/ML_python.md<br />
