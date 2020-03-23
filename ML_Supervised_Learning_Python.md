@@ -1,4 +1,4 @@
-### Summary
+# Table of Contents
 * [0_Train-Test Data Split](#0_train-test-data-split)
 * [1_Models](#1_models)
   * [1_1_Regression](#1_1_Regression)
@@ -10,16 +10,16 @@
     * [1_2_2_K Nearest Neighbor Classifier_KNN](#1_2_2_K-Nearest-Neighbor-Classifier_KNN)  
     * [1_2_3_Support Vector Machine_SVM](#1_2_3_Support-Vector-Machine_SVM)
     * [1_2_4_Decision_Tree_Classifier](#1_2_4_Decision-Tree-Classifier)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
+* [2_Metrics](#2_Metrics)
+  * [2_1_Regression](#2_1_Regression)
+    * [2_1_1_MAE_Mean Absolute Error](#2_1_1_MAE_Mean-Absolute-Error)
+    * [2_1_2_MAPE_Mean Absolute Percentage Error](#2_1_2_MAPE_Mean-Absolute-Percentage-Error)
+    * [2_1_3_RMSE_Root Mean Squared Error](#2_1_3_RMSE_Root-Mean-Squared-Error)
+    * [2_1_4_Correlation](#2_1_4_Correlation)
+    * [2_1_5_Bias](#2_1_5_Bias)
+    * [2_1_6_Variance](#2_1_6_Variance)
+  * [2_2_Classification](#2_2_Classification)
+    * [2_2_1_Accuracy](#2_2_1_Accuracy)
   * [](#)
   * [](#)
   
@@ -167,9 +167,9 @@ clft.best_score_
 clft.best_params_
 ```
 
-# 2. Metrics
-## 2.1. Metrics: Regression
-### 2.1.1. MAE (Mean Absolute Error)
+# 2_Metrics
+## 2_1_Regression
+### 2_1_1_MAE_Mean Absolute Error
 Measures average magnitud of the errors without considering their direction (all errors in absolute value).
 It is intuitive to calculate, but you lose information related to the magnitud of th error.<br />
 Units are the same as the target variable.<br />
@@ -191,7 +191,7 @@ import numpy as np
 myMAE = np.mean(np.abs(reg.predict(X_test) - y_test))
 ```
 
-### 2.1.2. MAPE (Mean Absolute Percentage Error)
+### 2_1_2_MAPE_Mean Absolute Percentage Error
 Similar to MAE but it measures the error in percentage.<br />
 Value range from 0 to 100. Lower values are better.<br />
 **MAPE is not in sklearn so we calculate it MANUALLY with pandas**
@@ -201,7 +201,7 @@ import numpy as np
 myMAPE = np.mean(np.abs(reg.predict(X_test) - y_test)/y_test)
 ```
 
-### 2.1.3. RMSE (Root Mean Squared Error)
+### 2_1_3_RMSE_Root Mean Squared Error
 Measures average magnitud of errors.<br />
 Units are the same as the target variable.<br />
 Value range from 0 to infinite.<br />
@@ -219,7 +219,7 @@ np.sqrt(mean_absolute_error(reg.predict(X_test), y_test))
 | The square of RMSE minimizes errors < 1 and maximizes errors > 1. Meaning that if I have a moderate MAE but a big RMSE, there are a few points differing much from the prediction.
 MAE and RMSE are different magnitudes and we MUST calculate both. |
 
-### 2.1.4. Correlation
+### 2_1_4_Correlation
 It measures whether or not there is a relationship between two variables. There should be a strong correlation between predictions and real values.
 
 **With numpy**
@@ -245,7 +245,7 @@ def mycorr(pred,y_test):
 
 cross_val_score(model,X,y,cv=5,scoring=make_scorer(mycorr)).mean()
 ```
-### 2.1.5. Bias
+### 2_1_5_Bias
 It is the average of errors (prediction values minus real values).<br />
 Negative errors will compensate positive ones.<br />
 
@@ -271,7 +271,7 @@ def mybias(pred,y_test):
 cross_val_score(model,X,y,cv=5,scoring=make_scorer(mybias)).mean()
 ```
 
-### 2.1.6. Variance
+### 2_1_6_Variance
 Is the average of errors in predictions between two different data sets.
 
 ```python
@@ -285,8 +285,8 @@ np.mean(reg.predict(X_train) - reg.predict(X_test))
 |- **High Bias** means that we are not capturing the complexity of the problem (**underfitting**).|
 |- **High Variance** meansthat we may be modelling the noise in the training set (**overfitting**). |
 
-## 2.2. Metrics: Classification
-### 2.2.1. Accuracy
+## 2_2_Classification
+### 2_2_1_Accuracy
 It mesasures the overall predicted accuracy of the model in percentage.<br />
 It is calculated as `(True Positives + True Negatives)/(True Positives + True Negatives + False Positives + False Negatives)`
 
