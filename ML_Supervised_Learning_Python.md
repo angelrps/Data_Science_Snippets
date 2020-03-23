@@ -13,14 +13,14 @@
    * [Dependency](#dependency)
 <!--te-->
 
-[1_1_testing: summary whatever](#1_1_testing-summary)
+[0_Split Data](#0_split-data)
 
 Installation
 ============
 
 #### Summary
 ### Summmmary
-**0. Split Data**<br />
+#### 0_Split Data<br />
 **1. Models**<br />
 **1.1. Models: Regression**<br />
 **1.1.1. Linear Regression**<br />
@@ -66,7 +66,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.10)
 # 1. Models
 ## 1.1. Model: Regression
 
-# 1_1_testing: summary
+#### 1_1_testing: summary
 
 Input variables (**X**) must be pandas **Data Frame** <br />
 Output variable: (**y**) must be pandas **Series**
