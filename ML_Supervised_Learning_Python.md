@@ -375,7 +375,7 @@ plt.plot(fp,tp)
 ```
 ### 2_2_7_AUC_Area Under the Curve
 Value range from 0 to 1. Higher values are better. However if your AUC is below 0.5, you could invert all the outputs of your classifier and get a better score, so you did something wrong.<br />
-Once you have calculated the `roc_curve` from the point above:
+Once you have calculated the `roc_curve` from the point 2.2.6. above:
 ```python
 from sklearn.metrics import auc
 
@@ -386,7 +386,7 @@ cross_val_score(clr,X,y,scoring="roc_auc", cv=5).mean()
 ```
 
 ### 2_2_8_Confusion Matrix
-It is not a metric but it helps to see how distributed your predictions are.
+It is not a metric but it helps to see the distribution of your predictions.
 ```python
 from sklearn.metrics import confusion_matrix
 
@@ -394,7 +394,7 @@ confusion_matrix(y_test, clf.predict(X_test))
 ```
 
 # 3_Cross Validation Score
-Get more robust metrics using Cross Validation.<br />
+Cross Validation helps you get more robust metrics.<br />
 It returns an array with all values. We can then calculate the mean of them.
 
 ```python
@@ -434,7 +434,7 @@ reg_test.best_score_
 reg_test.best_estimator_
 reg_test.best_params_
 ```
-**Example with Support Vector Machines**
+**Example with Support Vector Machine**
 ```python
 from sklearn.model_selection import GridSearchCV
 from sklearn.svm import SVC
@@ -448,7 +448,7 @@ clf = GridSearchCV(SVC(kernel="poly",),
 clf.fit(X,y)
 ```
 ## 4_2_RandomizedSearchCV
-If you want to find parameters itereating through a big grid your computer may crash. RandomizedSearchCV picks up a limited number of parameters randomly from your grid.
+Your computer may crash if you try to find parameters iterating through a big grid. **RandomizedSearchCV** picks up a limited number of parameters randomly from your grid.
 
 ```python
 from sklearn.model_selection import RandomizedSearchCV
@@ -467,20 +467,19 @@ reg_dt_test.fit(X,y)
 ```
 # 5_Ensemble Learning
 Combination of multiple models in order to improve predictive accuracy.<br />
-Prevents overfitting.<br />
+It prevents overfitting.<br />
 It can be used in both Regression and Classification.<br />
 Random Forest and Gradient Boosting Tree are ensemble methods.
 
 ## 5_1_VotingClassifier
 Combines multiple different models into a single model, which is (ideally) stronger than any of the individual models alone.
-Example below of VotingClassifier created out of a DecisionTreeClassifier and LogisticRegression
+The example below is created out of DecisionTreeClassifier and LogisticRegression:
 ```python
 from sklearn.ensemble import VotingClassifier
-
-# Specify voting classifiers as a list of (name, sub-estimator) 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 
+# Specify voting classifiers as a list of (name, sub-estimator) 
 classifiers = [('dectree', DecisionTreeClassifier(min_samples_leaf=16, max_depth=4)),
                 ('log', LogisticRegression())]
 
@@ -505,10 +504,11 @@ clf.fit(X,y)
 ## 5_3_Random Forest
 Enhanced version of Bagging, using Decision Trees.
 Sklearn has its own algorithm for Random Forest.
+
 **Parameters:**<br />
-**N_estimators**: number of trees in the forest
-**max_depth**: number of splits <br />
-**min_samples_leaf**: minimum number of samples for each split group
+- **N_estimators**: number of trees in the forest
+- **max_depth**: number of splits <br />
+- **min_samples_leaf**: minimum number of samples for each split group
 
 ```python
 from sklearn.ensemble import RandomForestClassifier
@@ -525,10 +525,10 @@ clf.fit(X,y)
 
 ## 5_4_Gradient Boosting Tree
 **Parameters:**<br />
-**N_estimators**: number of trees in the forest <br />
-**learning_rate**: how much correction do I keep from the precious model. Small values (<= 0.1) lead to much better generalization error. <br />
-**max_depth**: number of splits <br />
-**min_samples_leaf**: minimum number of samples for each split group
+- **N_estimators**: number of trees in the forest.
+- **learning_rate**: how much correction do I keep from the precious model. Small values (<= 0.1) lead to much better generalization error.
+- **max_depth**: number of splits.
+- **min_samples_leaf**: minimum number of samples for each split group.
 ```python
 from sklearn.ensemble import GradientBoostingRegressor
 
@@ -537,7 +537,7 @@ regGBT = GradientBoostingRegressor(max_depth=4,
                                 n_estimators=100,
                                 learning_rate=0.1)
 ```
-Example using GridSearchCV
+Example using GridSearchCV:
 ```python
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import GridSearchCV
