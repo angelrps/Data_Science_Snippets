@@ -20,10 +20,23 @@
     * [2_1_6_Variance](#2_1_6_Variance)
   * [2_2_Classification](#2_2_Classification)
     * [2_2_1_Accuracy](#2_2_1_Accuracy)
-  * [](#)
-  * [](#)
-  
-  
+    * [2_2_2_Precision](#2_2_2_Precision)
+    * [2_2_3_Recall or Sensitivity](#2_2_3_Recall-or-Sensitivity)
+    * [2_2_4_F1 score](#2_2_4_F1-score)
+    * [2_2_5_Classification Report](#2_2_5_Classification-Report)
+    * [2_2_6_ROC Curve_Receiver Operating Characteristic Curve)](#2_2_6_ROC Curve_Receiver-Operating-Characteristic-Curve))
+    * [2_2_7_AUC_Area Under the Curve](#2_2_7_AUC_Area-Under-the-Curve)
+    * [2_2_8_Confusion Matrix](#2_2_8_Confusion-Matrix)
+* [3_Cross Validation Score](#3_Cross-Validation-Score)
+* [4_Testing Parameters](#4_Testing-Parameters)
+  * [4_1_GridSearchCV](#4_1_GridSearchCV)
+  * [4_2_RandomizedSearchCV](#4_2_RandomizedSearchCV)
+* [5_Ensemble Learning](#5_Ensemble-Learning)
+  * [5_1_VotingClassifier](#5_1_VotingClassifier)
+  * [5_2_Bagging or Bootstrap Aggregation](#5_2_Bagging-or-Bootstrap-Aggregation)
+  * [5_3_Random Forest](#5_3_Random-Forest)  
+  * [5_4_Gradient Boosting Tree](#5_4_Gradient-Boosting-Tree)
+* [6_Referencies](#6_Referencies)
   
 # 0_Train Test Data Split
 Create Training Set and Test Set with sklearn.
@@ -300,7 +313,7 @@ from sklearn.model_selection import cross_val_score
 
 cross_val_score(clr,X,y,scoring="accuracy", cv=5).mean()
 ```
-### 2.2.2. Precision
+### 2_2_2_Precision
 It is like Accuracy but it only looks at data that you predicted positive.<br />
 It is calculated as `(True Positives)/(True Positives + False Positives)`
 
@@ -314,7 +327,7 @@ from sklearn.model_selection import cross_val_score
 
 cross_val_score(clf,X,y,scoring="precision").mean()
 ```
-### 2.2.3. Recall (Sensitivity)
+### 2_2_3_Recall or Sensitivity
 Ability of a model to find all the relevant cases within a dataset.<br />
 It is calculated as `(True Positives)/(True Positives + False Negatives)`
 
@@ -328,7 +341,7 @@ from sklearn.model_selection import cross_val_score
 
 cross_val_score(clf,X,y,scoring="recall").mean()
 ```
-### 2.2.4. F1 score
+### 2_2_4_F1 score
 Harmonic mean of Precision and Recall.<br />
 Value range from 0 (worst) to 1 (best).<br />
 It is calculated as `2*(Recall * Precision) / (Recall + Precision)`
@@ -339,7 +352,7 @@ from sklearn.metrics import f1_score
 f1_score(y_test, clf.predict(X_test))
 ```
 
-### 2.2.5. Classification Report
+### 2_2_5_Classification Report
 Builds a report showing Precision, Recall and F1-score of our model.
 
 ```python
@@ -347,7 +360,7 @@ from sklearn.metrics import classification_report
 
 print(classification_report(y_test,clf.predict(X_test)))
 ```
-### 2.2.6. ROC Curve (Receiver Operating Characteristic Curve)
+### 2_2_6_ROC Curve_Receiver Operating Characteristic Curve)
 It show how confident is your classifier with the area under the curve.
 
 ```python
@@ -361,7 +374,7 @@ target_pos = 1 # Or 0 for the other class
 fp,tp,_ = roc_curve(y_test,pred[:,target_pos])
 plt.plot(fp,tp)
 ```
-### 2.2.7. AUC (Area Under the Curve)
+### 2_2_7_AUC_Area Under the Curve
 Value range from 0 to 1. Higher values are better. However if your AUC is below 0.5, you could invert all the outputs of your classifier and get a better score, so you did something wrong.<br />
 Once you have calculated the `roc_curve` from the point above:
 ```python
@@ -373,7 +386,7 @@ auc(fp,tp)
 cross_val_score(clr,X,y,scoring="roc_auc", cv=5).mean()
 ```
 
-### 2.2.8. Confusion Matrix
+### 2_2_8_Confusion Matrix
 It is not a metric but it helps to see how distributed your predictions are.
 ```python
 from sklearn.metrics import confusion_matrix
@@ -381,7 +394,7 @@ from sklearn.metrics import confusion_matrix
 confusion_matrix(y_test, clf.predict(X_test))
 ```
 
-# 3. Cross Validation Score
+# 3_Cross Validation Score
 Get more robust metrics using Cross Validation.<br />
 It returns an array with all values. We can then calculate the mean of them.
 
@@ -396,8 +409,8 @@ cross_val_score(model, X, y, cv=5, scoring="neg_mean_squared_error").mean()
 # scoring = scoring function
 ```
 
-# 4. Testing Parameters
-## 4.1. GridSearchCV
+# 4_Testing Parameters
+## 4_1_GridSearchCV
 Search over a grid of parameters to find the best for your model. It returns an instance of the best model found. After this you need to train the model.
 
 **Example with KNeighborsRegressor()**
@@ -435,7 +448,7 @@ clf = GridSearchCV(SVC(kernel="poly",),
 # Train the model with the dataset
 clf.fit(X,y)
 ```
-## 4.2. RandomizedSearchCV
+## 4_2_RandomizedSearchCV
 If you want to find parameters itereating through a big grid your computer may crash. RandomizedSearchCV picks up a limited number of parameters randomly from your grid.
 
 ```python
@@ -453,12 +466,13 @@ reg_dt_test = RandomizedSearchCV(DecisionTreeRegressor(),
 # Train the model with the dataset
 reg_dt_test.fit(X,y)
 ```
-# 5. Ensemble Learning
+# 5_Ensemble Learning
 Combination of multiple models in order to improve predictive accuracy.<br />
 Prevents overfitting.<br />
 It can be used in both Regression and Classification.<br />
 Random Forest and Gradient Boosting Tree are ensemble methods.
-## 5.1. VotingClassifier
+
+## 5_1_VotingClassifier
 Combines multiple different models into a single model, which is (ideally) stronger than any of the individual models alone.
 Example below of VotingClassifier created out of a DecisionTreeClassifier and LogisticRegression
 ```python
@@ -474,7 +488,7 @@ classifiers = [('dectree', DecisionTreeClassifier(min_samples_leaf=16, max_depth
 # Create VotingClassifier
 clf = VotingClassifier(estimators = classifiers)
 ```
-## 5.2. Bagging (Bootstrap Aggregation)
+## 5_2_Bagging or Bootstrap Aggregation
 It divides the dataset into subsets, sampling with replacement, fits a base estimator on each subset, and then aggregate their individual predictions.<br />
 
 ```python
@@ -489,7 +503,7 @@ clf=BaggingClassifier(base_estimator=KNeighborsClassifier(n_neighbors=4),n_estim
 clf.fit(X,y)
 ```
 
-## 5.3. Random Forest
+## 5_3_Random Forest
 Enhanced version of Bagging, using Decision Trees.
 Sklearn has its own algorithm for Random Forest.
 **Parameters:**<br />
@@ -510,7 +524,7 @@ clf = RandomForestClassifier(max_depth=3,
 clf.fit(X,y)
 ```
 
-## 5.4. Gradient Boosting Tree
+## 5_4_Gradient Boosting Tree
 **Parameters:**<br />
 **N_estimators**: number of trees in the forest <br />
 **learning_rate**: how much correction do I keep from the precious model. Small values (<= 0.1) lead to much better generalization error. <br />
@@ -536,7 +550,8 @@ reg = GridSearchCV(GradientBoostingRegressor(n_estimators=50),
                   cv=5)
 ```
 
-# References
+# 6_References
+https://github.com/Beovulfo/snippets3/blob/master/ML_python.md
 https://examples.dask.org/ <br />
 https://scikit-learn.org <br />
 https://machinelearningmastery.com/configure-gradient-boosting-algorithm/
