@@ -24,7 +24,7 @@
     * [2_2_3_Recall or Sensitivity](#2_2_3_Recall-or-Sensitivity)
     * [2_2_4_F1 score](#2_2_4_F1-score)
     * [2_2_5_Classification Report](#2_2_5_Classification-Report)
-    * [2_2_6_ROC Curve_Receiver Operating Characteristic Curve)](#2_2_6_ROC-Curve_Receiver-Operating-Characteristic-Curve))
+    * [2_2_6_ROC Curve_Receiver Operating Characteristic Curve)](#2_2_6_ROC-Curve_(Receiver-Operating-Characteristic-Curve))
     * [2_2_7_AUC_Area Under the Curve](#2_2_7_AUC_Area-Under-the-Curve)
     * [2_2_8_Confusion Matrix](#2_2_8_Confusion-Matrix)
 * [3_Cross Validation Score](#3_Cross-Validation-Score)
@@ -184,7 +184,7 @@ clft.best_params_
 ## 2_1_Regression
 ### 2_1_1_MAE_Mean Absolute Error
 Measures average magnitud of the errors without considering their direction (all errors in absolute value).
-It is intuitive to calculate, but you lose information related to the magnitud of th error.<br />
+It is intuitive to calculate, but you lose information related to the magnitud of the error.<br />
 Units are the same as the target variable.<br />
 Value range from 0 to infinite. Lower values are better.
 
@@ -205,9 +205,9 @@ myMAE = np.mean(np.abs(reg.predict(X_test) - y_test))
 ```
 
 ### 2_1_2_MAPE_Mean Absolute Percentage Error
-Similar to MAE but it measures the error in percentage.<br />
-Value range from 0 to 100. Lower values are better.<br />
-**MAPE is not in sklearn so we calculate it MANUALLY with pandas**
+Similar to MAE but it measures the error in **percentage**.<br />
+Lower values are better.<br />
+**MAPE is not in sklearn so we calculate it MANUALLY with pandas:**
 ```python
 import numpy as np
 
@@ -217,8 +217,7 @@ myMAPE = np.mean(np.abs(reg.predict(X_test) - y_test)/y_test)
 ### 2_1_3_RMSE_Root Mean Squared Error
 Measures average magnitud of errors.<br />
 Units are the same as the target variable.<br />
-Value range from 0 to infinite.<br />
-Lower values are better.
+Value range from 0 to infinite. Lower values are better.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -227,7 +226,7 @@ from sklearn.metrics import mean_squared_error
 np.sqrt(mean_absolute_error(reg.predict(X_test), y_test))
 ```
 
-| NOTES: MAE and RMSE |
+| MAE vs RMSE |
 | ------------------- |
 | The square of RMSE minimizes errors < 1 and maximizes errors > 1. Meaning that if I have a moderate MAE but a big RMSE, there are a few points differing much from the prediction.
 MAE and RMSE are different magnitudes and we MUST calculate both. |
@@ -296,11 +295,11 @@ np.mean(reg.predict(X_train) - reg.predict(X_test))
 | Bias-Variance Tradeoff|
 | ------------------- |
 |- **High Bias** means that we are not capturing the complexity of the problem (**underfitting**).|
-|- **High Variance** meansthat we may be modelling the noise in the training set (**overfitting**). |
+|- **High Variance** means that we may be modelling the noise in the training set (**overfitting**). |
 
 ## 2_2_Classification
 ### 2_2_1_Accuracy
-It mesasures the overall predicted accuracy of the model in percentage.<br />
+It measures the overall predicted accuracy of the model in percentage.<br />
 It is calculated as `(True Positives + True Negatives)/(True Positives + True Negatives + False Positives + False Negatives)`
 
 ```python
@@ -342,7 +341,7 @@ from sklearn.model_selection import cross_val_score
 cross_val_score(clf,X,y,scoring="recall").mean()
 ```
 ### 2_2_4_F1 score
-Harmonic mean of Precision and Recall.<br />
+Harmonic mean of Precision and Recall. It measures if we have a good balance between Precision and Recall.<br />
 Value range from 0 (worst) to 1 (best).<br />
 It is calculated as `2*(Recall * Precision) / (Recall + Precision)`
 
@@ -360,7 +359,7 @@ from sklearn.metrics import classification_report
 
 print(classification_report(y_test,clf.predict(X_test)))
 ```
-### 2_2_6_ROC Curve_Receiver Operating Characteristic Curve)
+### 2_2_6_ROC Curve_(Receiver Operating Characteristic Curve)
 It show how confident is your classifier with the area under the curve.
 
 ```python
