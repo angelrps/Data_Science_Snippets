@@ -13,16 +13,12 @@
    * [Dependency](#dependency)
 <!--te-->
 
-[0_Split Data whatever](#0_train-test-data-split)
-
-Installation
-============
-
-#### Summary
 ### Summmmary
+[0_Train-Test Data Split](#0_train-test-data-split) <br />
+[1_Models](#1_models)<br />
+[1_1_Models_Regression](#1_1_Models-Regression)
 
-**1. Models**<br />
-**1.1. Models: Regression**<br />
+
 **1.1.1. Linear Regression**<br />
 **1.1.2. K-Nearest Neighbor (KNN)**<br />
 **1.1.3. Decision Tree Regressor**<br />
@@ -63,8 +59,8 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.10)
 ```
 
-# 1. Models
-## 1.1. Model: Regression
+# 1_Models
+## 1_1_Models Regression
 
 #### 1_1_testing: summary
 
