@@ -24,7 +24,7 @@
     * [2_2_3_Recall or Sensitivity](#2_2_3_Recall-or-Sensitivity)
     * [2_2_4_F1 score](#2_2_4_F1-score)
     * [2_2_5_Classification Report](#2_2_5_Classification-Report)
-    * [2_2_6_ROC Curve_Receiver Operating Characteristic Curve)](#2_2_6_ROC Curve_Receiver-Operating-Characteristic-Curve))
+    * [2_2_6_ROC Curve_Receiver Operating Characteristic Curve)](#2_2_6_ROC-Curve_Receiver-Operating-Characteristic-Curve))
     * [2_2_7_AUC_Area Under the Curve](#2_2_7_AUC_Area-Under-the-Curve)
     * [2_2_8_Confusion Matrix](#2_2_8_Confusion-Matrix)
 * [3_Cross Validation Score](#3_Cross-Validation-Score)
@@ -36,7 +36,7 @@
   * [5_2_Bagging or Bootstrap Aggregation](#5_2_Bagging-or-Bootstrap-Aggregation)
   * [5_3_Random Forest](#5_3_Random-Forest)  
   * [5_4_Gradient Boosting Tree](#5_4_Gradient-Boosting-Tree)
-* [6_Referencies](#6_Referencies)
+* [6_References](#6_References)
   
 # 0_Train Test Data Split
 Create Training Set and Test Set with sklearn.
@@ -69,9 +69,9 @@ reg.predict([[2540],[3500],[4000]])
 **Parameters:**<br />
 - **k**: number of neighbors <br />
 - **weight**: way to give more weight to points which are nearby and less weight to the points which are farther away. <br />
-* `'uniform'`: all the same weight.<br />
-* `'distance'`: weighted average per distance. <br />
-* `'Custom'`: weighted average provided by user
+  * `'uniform'`: all the same weight.<br />
+  * `'distance'`: weighted average per distance. <br />
+  * `'Custom'`: weighted average provided by user
 
 ```python
 from sklearn.neighbors import KNeighborsRegressor
@@ -89,8 +89,8 @@ regk.fit(X_train, y_train)
 Simple to understand, interpret and vizualise.
 
 **Parameters:**<br />
-**max_depth**: number of splits <br />
-**min_samples_leaf**: minimum number of samples for each split group
+- **max_depth**: number of splits <br />
+- **min_samples_leaf**: minimum number of samples for each split group
 
 ```python
 from sklearn.tree import DecisionTreeRegressor
@@ -104,7 +104,7 @@ regd.fit(X_train, y_train)
 ```
 
 ## 1_2_Classification
-Output is a Class
+Output is a Class.
 
 ### 1_2_1_Logistic Regression
 
@@ -121,7 +121,7 @@ clr.fit(X_train,y_train)
 ### 1_2_2_K Nearest Neighbor Classifier_KNN
 
 **Parameters:**<br />
-Same as K-Nearest Neighbor Classifier
+Same as K-Nearest Neighbor Regressor.
 ```python
 # Load the library
 from sklearn.neighbors import KNeighborsClassifier
@@ -135,15 +135,15 @@ regk.fit(X_train, y_train)
 ```
 ### 1_2_3_Support Vector Machine_SVM
 Tries to separate the classes by a line. This line can be straight, circle, and more.<br />
-It is computationally expensive so we will use as a last option if the other models fail.
+It is computationally expensive so we will use it as a last option if the other models fail.
 
 **Parameters:**<br />
-**C**: error margins. Large values = smaller margins. Small values = larger margins.<br />
-**kernel**: function that transforms the dimensional space so we can separate de data when there is a non-linear separation problem.<br />
-- `'linear'`: line of separation
-- `'poly'`: curved line of separation
-- `'rbf'`: circle of separation <br />
-**degree**: degree of the polynomal kernel function (`'poly'`).
+- **C**: error margins. Large values = smaller margins. Small values = larger margins.
+- **kernel**: function that transforms the dimensional space so we can separate de data when there is a non-linear separation problem.
+  * `'linear'`: line of separation.
+  * `'poly'`: curved line of separation.
+  * `'rbf'`: circle of separation.
+- **degree**: degree of the polynomal kernel function (`'poly'`).
 
 ```python
 from sklearn.svm import SVC
@@ -156,7 +156,7 @@ clf.fit(X_train,y_train)
 ```
 
 ### 1_2_4_Decision Tree Classifier
-Same Parameters as Decision Tree Regressor
+Same Parameters as Decision Tree Regressor.
 ```python
 from sklearn.tree import DecisionTreeClassifier
 clft = DecisionTreeClassifier(min_samples_leaf=20, max_depth=10)
@@ -551,7 +551,7 @@ reg = GridSearchCV(GradientBoostingRegressor(n_estimators=50),
 ```
 
 # 6_References
-https://github.com/Beovulfo/snippets3/blob/master/ML_python.md
+https://github.com/Beovulfo/snippets3/blob/master/ML_python.md<br />
 https://examples.dask.org/ <br />
 https://scikit-learn.org <br />
 https://machinelearningmastery.com/configure-gradient-boosting-algorithm/
