@@ -1,12 +1,25 @@
 ### Summary
-* [0_Train-Test Data Split](#0_train-test-data-split) <br />
-* [1_Models](#1_models)<br />
+* [0_Train-Test Data Split](#0_train-test-data-split)
+* [1_Models](#1_models)
   * [1_1_Regression](#1_1_Regression)
     * [1_1_1_Linear Regression](#1_1_1_Linear-Regression)
     * [1_1_2_K-Nearest Neighbor Regressor_KNN)](#1_1_2_K-Nearest-Neighbor-Regressor_KNN)
     * [1_1_3_Decision Tree Regressor](#1_1_3_Decision-Tree-Regressor)
   * [1_2_Classification](#1_2_Classification)
     * [1_2_1_Logistic Regression](#1_2_1_Logistic-Regression)
+    * [1_2_2_K Nearest Neighbor Classifier_KNN](#1_2_2_K-Nearest-Neighbor-Classifier_KNN)  
+    * [1_2_3_Support Vector Machine_SVM](#1_2_3_Support-Vector-Machine_SVM)
+    * [1_2_4_Decision_Tree_Classifier](#1_2_4_Decision-Tree-Classifier)
+  * [](#)
+  * [](#)
+  * [](#)
+  * [](#)
+  * [](#)
+  * [](#)
+  * [](#)
+  * [](#)
+  * [](#)
+  * [](#)
   * [](#)
   * [](#)
   
@@ -92,7 +105,7 @@ clr=LogisticRegression()
 # Train the data
 clr.fit(X_train,y_train)
 ```
-### 1.2.2. K-Nearest Neighbor Classifier (KNN)
+### 1_2_2_K Nearest Neighbor Classifier_KNN
 
 **Parameters:**<br />
 Same as K-Nearest Neighbor Classifier
@@ -107,7 +120,7 @@ regk = KNeighborsClassifier(n_neighbors=5)
 # Train the data 
 regk.fit(X_train, y_train)
 ```
-### 1.2.3. Support Vector Machine (SVM)
+### 1_2_3_Support Vector Machine_SVM
 Tries to separate the classes by a line. This line can be straight, circle, and more.<br />
 It is computationally expensive so we will use as a last option if the other models fail.
 
@@ -129,7 +142,7 @@ clf = SVC(kernel="linear",C=10)
 clf.fit(X_train,y_train)
 ```
 
-### 1.2.4. Decision Tree Classifier
+### 1_2_4_Decision Tree Classifier
 Same Parameters as Decision Tree Regressor
 ```python
 from sklearn.tree import DecisionTreeClassifier
