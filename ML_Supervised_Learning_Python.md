@@ -583,7 +583,7 @@ https://github.com/Beovulfo/snippets3/blob/master/ML_python.md<br />
 https://examples.dask.org/ <br />
 https://scikit-learn.org <br />
 https://machinelearningmastery.com/configure-gradient-boosting-algorithm/ <br />
-Thanks to [Toni Almagro](linkedin.com/in/antonio-almagro-22621439) for the idea and the base code.
+Thanks to [Toni Almagro](https://www.linkedin.com/in/antonio-almagro-22621439) for the idea and the base code.
 
 
 
