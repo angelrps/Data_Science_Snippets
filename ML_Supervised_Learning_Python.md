@@ -222,7 +222,7 @@ Units are the same as the target variable.<br />
 Value range from 0 to infinite. Lower values are better.
 
 ```python
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_error
 
 # Use against predictions (we have to calculate the squared root of MSE)
 np.sqrt(mean_absolute_error(reg.predict(X_test), y_test))
